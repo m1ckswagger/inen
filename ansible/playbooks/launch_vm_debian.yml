@@ -1,0 +1,41 @@
+---
+- name: Launch a compute instance
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Launch a VM instance
+    os_server:
+      image: Debian 10
+      name: Ansible_Debian_Test_VM
+      key_name: "{{ lookup('env', 'OS_KEY_NAME') }}"
+      availability_zone: nova
+      flavor: m1.normal
+      state: present
+      security_groups: default
+      network: provider
+      volume_size: 5
+      boot_from_volume: yes
+    register: my_vm
+
+  - name: Add VM to inventory
+    add_host:
+      name: Ansible_Debian_Test_VM
+      ansible_host: "{{ my_vm.server.public_v4 }}"
+      groups: openstacklaunched
+
+  - name: Wait until SSH server is available
+    pause: seconds=30
+
+- name: Using new hosts information to interact with the hosts
+  hosts: openstacklaunched
+  gather_facts: false
+  remote_user: debian
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+
+  - name: Create file within the instance
+    file: path=/tmp/ansible_test state=touch mode=0644
