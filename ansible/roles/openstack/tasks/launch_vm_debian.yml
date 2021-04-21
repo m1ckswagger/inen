@@ -1,0 +1,20 @@
+---
+- name: Launch a VM instance
+  os_server:
+    image: "{{ vm_config.image }}"
+    name: "{{ inventory_hostname }}_from_ansible"
+    key_name: "{{ lookup('env', 'OS_KEY_NAME') }}"
+    availability_zone: nova
+    flavor: "{{ vm_config.flavor }}"
+    state: present
+    security_groups: "{{ vm_config.security_groups }}"
+    nics:
+      - net-id: 021ecb7d-9c36-4214-9c0f-2b756f1d1560
+      - net-name: provider
+    volume_size: "{{ vm_config.volume_size }}"
+    boot_from_volume: yes
+    terminate_volume: true
+    meta:
+      hostname: "{{ inventory_hostname }}"
+
+

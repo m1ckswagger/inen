@@ -1,0 +1,6 @@
+---
+- name: Launch a compute instance
+  hosts: ipam
+  connection: local
+  roles:
+    - openstack

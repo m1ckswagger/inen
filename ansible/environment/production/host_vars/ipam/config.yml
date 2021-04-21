@@ -1,0 +1,6 @@
+---
+vm_config:
+  image: Debian 10
+  flavor: m1.huge
+  security_groups: default
+  volume_size: 10
