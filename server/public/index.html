@@ -1,0 +1,54 @@
+{{ template "header.html" .}}
+
+<form method="post" action="/api/request">
+  <div class="form-group">
+    <label for="requesterEmail">Email address</label>
+    <input type="email" class="form-control" id="requesterEmail" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="requestHostname">Hostname</label>
+    <input type="text" class="form-control" id="requestHostname">
+  </div>
+  <div class="form-group">
+    <label for="requestOS">Operating System</label>
+    <select class="form-control" id="requestOS">
+      <option value="Debian10">Debian Buster</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="requestHDD">Disk size</label>
+    <select class="form-control" id="requestHDD">
+      <option value="10">10 GB</option>
+      <option value="20">20 GB</option>
+      <option value="32">32 GB</option>
+      <option value="64">64 GB</option>
+      <option value="128">128 GB</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="requestCPU">CPUs</label>
+    <select class="form-control" id="requestCPU">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="4">4</option>
+      <option value="8">8</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="requestRAM">Memory</label>
+    <select class="form-control" id="requestRAM">
+      <option value="2">2 GB</option>
+      <option value="4">4 GB</option>
+      <option value="8">8 GB</option>
+      <option value="16">16 GB</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="requestNetwork">Network</label>
+    <select class="form-control" id="requestNetwork">
+      <option value="1">Network 1</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
