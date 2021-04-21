@@ -1,1 +1,4 @@
-ansible/InEn-Gruppe-F-openrc.sh
+*/InEn-Gruppe-F-openrc.sh
+*/.openrc
+venv
+.idea
